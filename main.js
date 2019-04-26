@@ -6,7 +6,7 @@ const createServer = (server, port) => {
 }
 
 const appServer = (request, response) => {
-    var url = request.url;
+    const url = request.url;
     if (request.url == '/') {
         url = '/index.html';
     }
