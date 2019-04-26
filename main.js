@@ -5,7 +5,7 @@ const createServer = (server, port) => {
     http.createServer(server).listen(port);
 }
 
-const appServer = (request, response) => {
+const app = (request, response) => {
     const url = request.url;
     if (request.url == '/') {
         url = '/index.html';
@@ -17,6 +17,6 @@ const appServer = (request, response) => {
     response.end(fs.readFileSync(__dirname + url));
 }
 
-createServer(appServer, 3000);
-createServer(appServer, 5000);
+createServer(app, 3000);
+createServer(app, 5000);
 
