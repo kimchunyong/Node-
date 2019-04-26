@@ -1,6 +1,11 @@
-var http = require('http');
-var fs = require('fs');
-var app = http.createServer(function (request, response) {
+const http = require('http');
+const fs = require('fs');
+
+const createServer = (server, port) => {
+    http.createServer(server).listen(port);
+}
+
+const appServer = (request, response) => {
     var url = request.url;
     if (request.url == '/') {
         url = '/index.html';
@@ -10,6 +15,8 @@ var app = http.createServer(function (request, response) {
     }
     response.writeHead(200);
     response.end(fs.readFileSync(__dirname + url));
+}
 
-});
-app.listen(3000);
+createServer(appServer, 3000);
+createServer(appServer, 5000);
+
